@@ -296,73 +296,74 @@
       <p>© 2025 Invest1001 All Rights Reserved.</p>
     </footer>
   </div>
+	
+	<!--Nav Bar-->
+	<script>
+		document.querySelectorAll('.nav a').forEach(anchor => {
+		  anchor.addEventListener('click', function(e) {
+			e.preventDefault();
+			const href = this.getAttribute('href');
+			window.location.href = href; // Navigate to index.html
+		  });
+		});
+	</script>
 
-  <script>
-    document.querySelectorAll('.nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const href = this.getAttribute('href');
-        window.location.href = href; // Navigate to index.html
-      });
-    });
-  </script>
+	<!-- Firebase SDK -->
+	<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+	<script>
+	  // Firebase configuration
+	  const firebaseConfig = {
+		apiKey: "AIzaSyB5hYKIi9R_UuL9KI-Y17upyMHNbHgiA9Y",
+		authDomain: "invest1001-a5282.firebaseapp.com",
+		databaseURL: "https://invest1001-a5282-default-rtdb.firebaseio.com/",
+		projectId: "invest1001-a5282",
+		storageBucket: "invest1001-a5282.firebasestorage.app",
+		messagingSenderId: "409129504874",
+		appId: "1:409129504874:web:fce17614df12345d327a13",
+		measurementId: "G-6DL0Z71VMZ"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	  const auth = firebase.auth();
+	  const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js"></script>
-  <script>
-    // Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyB5hYKIi9R_UuL9KI-Y17upyMHNbHgiA9Y",
-      authDomain: "invest1001-a5282.firebaseapp.com",
-      databaseURL: "https://invest1001-a5282-default-rtdb.firebaseio.com/",
-      projectId: "invest1001-a5282",
-      storageBucket: "invest1001-a5282.firebasestorage.app",
-      messagingSenderId: "409129504874",
-      appId: "1:409129504874:web:fce17614df12345d327a13",
-      measurementId: "G-6DL0Z71VMZ"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const googleProvider = new firebase.auth.GoogleAuthProvider();
+	  // Login with Google
+	  document.getElementById('google-login-btn').addEventListener('click', () => {
+		auth.signInWithPopup(googleProvider)
+		  .then((result) => {
+			const user = result.user;
+			document.getElementById('user-info').textContent = `歡迎, ${user.displayName}`;
+			document.getElementById('google-login-btn').style.display = 'none';
+			document.getElementById('logout-btn').style.display = 'inline';
+		  })
+		  .catch((error) => {
+			console.error('Login error:', error.message);
+		  });
+	  });
 
-    // Login with Google
-    document.getElementById('google-login-btn').addEventListener('click', () => {
-      auth.signInWithPopup(googleProvider)
-        .then((result) => {
-          const user = result.user;
-          document.getElementById('user-info').textContent = `歡迎, ${user.displayName}`;
-          document.getElementById('google-login-btn').style.display = 'none';
-          document.getElementById('logout-btn').style.display = 'inline';
-        })
-        .catch((error) => {
-          console.error('Login error:', error.message);
-        });
-    });
+	  // Logout
+	  document.getElementById('logout-btn').addEventListener('click', () => {
+		auth.signOut().then(() => {
+		  document.getElementById('user-info').textContent = '';
+		  document.getElementById('google-login-btn').style.display = 'inline';
+		  document.getElementById('logout-btn').style.display = 'none';
+		});
+	  });
 
-    // Logout
-    document.getElementById('logout-btn').addEventListener('click', () => {
-      auth.signOut().then(() => {
-        document.getElementById('user-info').textContent = '';
-        document.getElementById('google-login-btn').style.display = 'inline';
-        document.getElementById('logout-btn').style.display = 'none';
-      });
-    });
-
-    // Check login state
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        document.getElementById('user-info').textContent = `歡迎, ${user.displayName}`;
-        document.getElementById('google-login-btn').style.display = 'none';
-        document.getElementById('logout-btn').style.display = 'inline';
-      } else {
-        document.getElementById('user-info').textContent = '';
-        document.getElementById('google-login-btn').style.display = 'inline';
-        document.getElementById('logout-btn').style.display = 'none';
-      }
-    });
-  </script>
+	  // Check login state
+	  auth.onAuthStateChanged((user) => {
+		if (user) {
+		  document.getElementById('user-info').textContent = `歡迎, ${user.displayName}`;
+		  document.getElementById('google-login-btn').style.display = 'none';
+		  document.getElementById('logout-btn').style.display = 'inline';
+		} else {
+		  document.getElementById('user-info').textContent = '';
+		  document.getElementById('google-login-btn').style.display = 'inline';
+		  document.getElementById('logout-btn').style.display = 'none';
+		}
+	  });
+	</script>
 </body>
 </html>
 ```
