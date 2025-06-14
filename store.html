@@ -37,113 +37,332 @@
         }
         return gk_fileData[filename] || "";
         }
-        </script><!DOCTYPE html>
+        </script>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invest1001 Store</title>
+  <title>Invest1001 - 購買課程</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #E6F0FA; /* Soft light blue */
+      padding-top: 60px; /* For sticky nav */
     }
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 0 20px;
     }
     .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
       background-color: #333;
       color: white;
       padding: 10px 0;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+    }
+    .nav-logo img {
+      height: 40px;
+      margin-left: 20px;
     }
     .nav a {
       color: white;
       text-decoration: none;
-      padding: 10px;
-      cursor: pointer;
+      margin: 0 15px;
+      font-size: 1.1em;
     }
     .nav a:hover {
-      background-color: #555;
+      color: #007bff;
     }
-    .nav-logo img {
-      height: 40px;
+    .nav-auth {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: 20px;
     }
-    .course {
-      margin: 20px 0;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 8px;
+    .auth-button {
+      background-color: #4285f4; /* Google blue */
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
-    .course h3 {
-      font-size: 1.4em;
+    .auth-button:hover {
+      background-color: #357ae8;
+    }
+    .user-info {
+      color: white;
+      font-size: 0.9em;
+    }
+    .store-header {
+      text-align: center;
+      padding: 40px 0;
+      background-color: #f8f9fa;
+    }
+    .store-header h1 {
+      font-size: 2.5em;
       color: #333;
     }
-    .course p {
+    .store-header p {
+      font-size: 1.2em;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .section {
+      padding: 40px 0;
+    }
+    .section h2 {
+      font-size: 2em;
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .course-item {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .course-item h3 {
+      font-size: 1.8em;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .course-item p {
       font-size: 1.1em;
       color: #666;
+      line-height: 1.6;
+      margin-bottom: 10px;
     }
-    .buy-button {
-      display: inline-block;
+    .course-item .price {
+      font-size: 1.2em;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+    .course-item a {
       background-color: #007bff;
       color: white;
       padding: 10px 20px;
       text-decoration: none;
       border-radius: 5px;
+      display: inline-block;
     }
-    .buy-button:hover {
+    .course-item a:hover {
       background-color: #0056b3;
+    }
+    .image-standard {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+    .footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+    .footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    .contact-icon {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    @media (max-width: 768px) {
+      .nav {
+        flex-direction: column;
+        padding: 15px 0;
+      }
+      .nav a {
+        margin: 5px 0;
+      }
+      .nav-auth {
+        margin-top: 10px;
+        margin-right: 0;
+      }
+      .store-header h1 {
+        font-size: 2em;
+      }
+      .course-item {
+        padding: 15px;
+      }
     }
   </style>
 </head>
 <body>
-  <nav class="nav">
-    <div class="nav-logo">
-      <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/Invest1001Icon.jpg?raw=true" alt="Invest1001 Logo">
-    </div>
-    <a href="index.html">返回課程首頁</a>
-  </nav>
   <div class="container">
-    <h1>購買 Invest1001 課程</h1>
-    <div class="course" id="t1">
-      <h3>T1 投資101基礎課程</h3>
-      <p>讓你學懂大學也沒教你的投資課</p>
-	  <p>購入後立即獲得聖者為王 Discord 伺服器尊貴會員資格，尊貴會員權利包括專屬討論區、每日市場更新、精彩活動等。</p>
-	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/ComingSoon.jpeg?raw=true" alt="T1 Course Thumbnail" class="course-image"> 
-      <p>價格: HKD$ ? </p>
-      <a href="[Payment processor link for T1]" class="buy-button">立即購買</a>
-    </div>
-    <div class="course" id="t2">
-      <h3>T2 高級課程</h3>
-      <p>教授進階理論和專業投資者必須知識</p>
-	  <p>購入後立即獲得聖者為王 Discord 伺服器尊貴會員資格，尊貴會員權利包括專屬討論區、每日市場更新、精彩活動等。</p>
-	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/ComingSoon.jpeg?raw=true" alt="T1 Course Thumbnail" class="course-image"> 
-      <p>價格: HKD$ ? </p>
-      <a href="[Payment processor link for T2]" class="buy-button">立即購買</a>
-    </div>
-    <div class="course" id="t3">
-      <h3>T3 高級課程</h3>
-      <p>教授進階分析策略和專業投資者常用技巧</p>
-	  <p>購入後立即獲得聖者為王 Discord 伺服器尊貴會員資格，尊貴會員權利包括專屬討論區、每日市場更新、精彩活動等。</p>
-	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/ComingSoon.jpeg?raw=true" alt="T1 Course Thumbnail" class="course-image"> 
-      <p>價格: HKD$ ? </p>
-      <a href="[Payment processor link for T3]" class="buy-button">立即購買</a>
-    </div>
-    <div class="course" id="t4">
-      <h3>T4 VIP 鑽石會員課程</h3>
-	  <p>此課程為月訂閱制，用戶須每月為此課程續費以繼續享有一切優惠，否則會員資格將會被暫時取消。</p>
-      <p>鑽石會員享有每月免費課程、投資總結、個人化建議等獨家福利!</p>
-	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/ComingSoon.jpeg?raw=true" alt="T1 Course Thumbnail" class="course-image"> 
-      <p>價格: HKD$ ? / 每月</p>
-      <a href="[Payment processor link for T4]" class="buy-button">立即購買</a>
-    </div>
+    <nav class="nav">
+      <div class="nav-logo">
+        <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/Invest1001Icon.jpg?raw=true" alt="Invest1001 Logo">
+      </div>
+      <div>
+        <a href="index.html">返回課程首頁</a>
+      </div>
+      <div class="nav-auth">
+        <button id="google-login-btn" class="auth-button">用 Google 登入</button>
+        <span id="user-info" class="user-info"></span>
+        <button id="logout-btn" class="auth-button" style="display:none;">登出</button>
+      </div>
+    </nav>
+
+    <section class="store-header">
+      <h1>購買 Invest1001 課程</h1>
+      <p>選擇適合你的投資課程，開啟財富自由之路！</p>
+    </section>
+
+    <section class="section" id="store">
+      <div class="course-item">
+        <h3>T1 投資101基礎課程</h3>
+        <p>讓你學懂大學也沒教你的投資課</p>
+        <p>購入後立即獲得聖者為王 Discord 伺服器尊貴會員資格，尊貴會員權利包括專屬討論區、每日市場更新、精彩活動等。</p>
+        <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/ComingSoon.jpeg?raw=true" alt="T1 Course Thumbnail" class="image-standard">
+        <p class="price">價格: HKD$ ?</p>
+        <a href="mailto:invest1001@gmail.com?subject=T1%20Course%20Purchase">立即購買</a>
+        <p><small>備註：請通過電郵聯繫我們完成購買，課程開通詳情將於付款確認後發送。</small></p>
+      </div>
+
+      <div class="course-item">
+        <h3>T2 高級課程</h3>
+        <p>教授進階理論和專業投資者必須知識</p>
+        <p>購入後立即獲得聖者為王 Discord 伺服器尊貴會員資格，尊貴會員權利包括專屬討論區、每日市場更新、精彩活動等。</p>
+        <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/ComingSoon.jpeg?raw=true" alt="T2 Course Thumbnail" class="image-standard">
+        <p class="price">價格: HKD$ ?</p>
+        <a href="mailto:invest1001@gmail.com?subject=T2%20Course%20Purchase">立即購買</a>
+        <p><small>備註：請通過電郵聯繫我們完成購買，課程開通詳情將於付款確認後發送。</small></p>
+      </div>
+
+      <div class="course-item">
+        <h3>T3 高級課程</h3>
+        <p>教授進階分析策略和專業投資者常用技巧</p>
+        <p>購入後立即獲得聖者為王 Discord 伺服器尊貴會員資格，尊貴會員權利包括專屬討論區、每日市場更新、精彩活動等。</p>
+        <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/ComingSoon.jpeg?raw=true" alt="T3 Course Thumbnail" class="image-standard">
+        <p class="price">價格: HKD$ ?</p>
+        <a href="mailto:invest1001@gmail.com?subject=T3%20Course%20Purchase">立即購買</a>
+        <p><small>備註：請通過電郵聯繫我們完成購買，課程開通詳情將於付款確認後發送。</small></p>
+      </div>
+
+      <div class="course-item">
+        <h3>T4 VIP 鑽石會員課程</h3>
+        <p>此課程為月訂閱制，用戶須每月為此課程續費以繼續享有一切優惠，否則會員資格將會被暫時取消。</p>
+        <p>鑽石會員享有每月免費課程、投資總結、個人化建議等獨家福利！</p>
+        <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/ComingSoon.jpeg?raw=true" alt="T4 Course Thumbnail" class="image-standard">
+        <p class="price">價格: HKD$ ? / 每月</p>
+        <a href="mailto:invest1001@gmail.com?subject=T4%20VIP%20Course%20Purchase">立即購買</a>
+        <p><small>備註：請通過電郵聯繫我們完成購買，課程開通詳情將於付款確認後發送。</small></p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>客服信箱：<a href="mailto:invest1001@gmail.com">invest1001@gmail.com</a></p>
+	  <p>
+		<img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/youtube.jpg?raw=true" alt="Youtube Icon" class="contact-icon">
+		Youtube: <a href="https://www.youtube.com/@Singme2themoon">o聖者為王o Benson</a>
+	  </p>
+      <p>
+		<img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/instragram_icon.jpeg?raw=true" alt="Instagram Icon" class="contact-icon">
+		Instagram: <a href="https://www.instagram.com/invest_1001?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">@Invest1001</a>
+	  </p>
+	  <p>
+		<img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/discord_icon.jpeg?raw=true" alt="Discord Icon" class="contact-icon">
+		Discord: <a href="https://discord.gg/t3mDhfq76V">按此加入聖者為王 Discord 伺服器</a>
+	  </p>
+	  <p>
+		<img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/futu_icon.jpeg?raw=true" alt="Futu Icon" class="contact-icon">
+		Futu: <a href="https://q.futunn.com/hk/profile/10200673?share_code=02Cxld">o聖者為王o</a>
+	  </p>
+      <p>© 2025 Invest1001 All Rights Reserved.</p>
+    </footer>
   </div>
+
+  <script>
+    document.querySelectorAll('.nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        window.location.href = href; // Navigate to index.html
+      });
+    });
+  </script>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js"></script>
+  <script>
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyB5hYKIi9R_UuL9KI-Y17upyMHNbHgiA9Y",
+      authDomain: "invest1001-a5282.firebaseapp.com",
+      databaseURL: "https://invest1001-a5282-default-rtdb.firebaseio.com/",
+      projectId: "invest1001-a5282",
+      storageBucket: "invest1001-a5282.firebasestorage.app",
+      messagingSenderId: "409129504874",
+      appId: "1:409129504874:web:fce17614df12345d327a13",
+      measurementId: "G-6DL0Z71VMZ"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
+
+    // Login with Google
+    document.getElementById('google-login-btn').addEventListener('click', () => {
+      auth.signInWithPopup(googleProvider)
+        .then((result) => {
+          const user = result.user;
+          document.getElementById('user-info').textContent = `歡迎, ${user.displayName}`;
+          document.getElementById('google-login-btn').style.display = 'none';
+          document.getElementById('logout-btn').style.display = 'inline';
+        })
+        .catch((error) => {
+          console.error('Login error:', error.message);
+        });
+    });
+
+    // Logout
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      auth.signOut().then(() => {
+        document.getElementById('user-info').textContent = '';
+        document.getElementById('google-login-btn').style.display = 'inline';
+        document.getElementById('logout-btn').style.display = 'none';
+      });
+    });
+
+    // Check login state
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        document.getElementById('user-info').textContent = `歡迎, ${user.displayName}`;
+        document.getElementById('google-login-btn').style.display = 'none';
+        document.getElementById('logout-btn').style.display = 'inline';
+      } else {
+        document.getElementById('user-info').textContent = '';
+        document.getElementById('google-login-btn').style.display = 'inline';
+        document.getElementById('logout-btn').style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
+```
