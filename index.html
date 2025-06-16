@@ -873,6 +873,7 @@
 	<!-- Firebase SDK -->
 	<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 	<script>
 	  const firebaseConfig = {
 		apiKey: "AIzaSyB5hYKIi9R_UuL9KI-Y17upyMHNbHgiA9Y",
@@ -881,11 +882,13 @@
 		projectId: "invest1001-a5282",
 		storageBucket: "invest1001-a5282.firebasestorage.app",
 		messagingSenderId: "409129504874",
-		appId: "1:409129504874:web:fce17614df12345d327a13",
+		appId: "1:409129504874:web:fce17614dfcb12345d327a13",
 		measurementId: "G-6DL0Z71VMZ"
 	  };
+
 	  firebase.initializeApp(firebaseConfig);
 	  const auth = firebase.auth();
+	  const db = firebase.firestore();
 	  const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 	  // Login with Google
@@ -893,23 +896,46 @@
 		auth.signInWithPopup(googleProvider)
 		  .then((result) => {
 			const user = result.user;
-			updateAuthDisplay(user);
+			// Create/update user document in Firestore
+			db.collection('users').doc(user.uid).set({
+			  email: user.email,
+			  displayName: user.displayName,
+			  courses: {
+				T1: false,
+				T2: false,
+				T3: false,
+				T4: false,
+				T4_expiryDate: null
+			  },
+			  lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+			}, { merge: true })
+			.then(() => {
+			  console.log('User document created/updated');
+			  updateAuthDisplay(user);
+			})
+			.catch((error) => {
+			  console.error('Firestore error:', error.message);
+			});
 		  })
 		  .catch((error) => {
 			console.error('Login error:', error.message);
 		  });
 	  });
 
-	  // Update auth display
+	  // Update auth display and purchase buttons
 	  function updateAuthDisplay(user) {
 		const loginBtn = document.getElementById('google-login-btn');
 		const userInfo = document.getElementById('user-info');
+		const loginPrompts = document.querySelectorAll('.login-prompt');
+
 		if (user) {
 		  loginBtn.style.display = 'none';
 		  userInfo.innerHTML = `<img src="${user.photoURL || 'images/placeholder_icon.png'}" alt="User Icon" class="user-icon">`;
+		  loginPrompts.forEach(prompt => prompt.style.display = 'none');
 		} else {
 		  loginBtn.style.display = 'flex';
 		  userInfo.innerHTML = '';
+		  loginPrompts.forEach(prompt => prompt.style.display = 'block');
 		}
 	  }
 
