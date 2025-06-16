@@ -91,17 +91,28 @@
 	.nav-auth {
 	  display: flex;
 	  align-items: center;
-	  gap: 0.625rem;
+	  gap: 0.5rem;
 	  margin-right: 1.25rem;
 	}
 	.auth-button {
-	  background-color: #4285f4;
-	  color: white;
-	  padding: 0.5rem 1rem;
+	  display: flex;
+	  align-items: center;
+	  gap: 0.5rem;
+	  background: none;
 	  border: none;
-	  border-radius: 0.3125rem;
 	  cursor: pointer;
+	  color: white;
 	  font-size: 0.9rem;
+	}
+	.auth-button img {
+	  width: 2rem;
+	  height: 2rem;
+	  border-radius: 50%;
+	}
+	.user-icon {
+	  width: 2rem;
+	  height: 2rem;
+	  border-radius: 50%;
 	}
 	.auth-button:hover {
 	  background-color: #357ae8;
@@ -501,11 +512,12 @@
         <a href="#faq">常見問答</a>
         <a href="#user-reviews">學生回饋</a>
       </div>
-      <div class="nav-auth">
-        <button id="google-login-btn" class="auth-button">用 Google 登入</button>
-        <span id="user-info" class="user-info"></span>
-        <button id="logout-btn" class="auth-button" style="display:none;">登出</button>
-      </div>
+	  <div class="nav-auth">
+	    <button id="google-login-btn" class="auth-button">
+		  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/usericon1.jpg?raw=true" alt="Login Icon"> Log In
+	    </button>
+	    <span id="user-info"></span>
+	  </div>
     </nav>
 
     <div class="advertisement">
@@ -762,12 +774,12 @@
       <h3>我可以使用 PayPal 或是虛擬貨幣付款嗎？</h3>
       <p> / </p>
       <h3>免責聲明</h3>
-      <p>若不幸招致任何損失，概與本專頁和網站及相關作者無關。本網課、群組、專頁、網站的任何內容及資料只供交流之用，不構成任何邀約、招攬或邀請、誘使、不論任何種類或形式的申述或訂立任何建議及推薦。投資涉及風險，請運用個人獨立思考能力自行作出投資決定，並適當地尋求獨立的財務專業意見。版權所有，本專頁和網站保留一切最終權利。</p>
+      <p>本網頁內容並非投資意見，亦不構成任何投資產品之要約、要約招攬或建議。本資料只作為一般用途，它並沒有考慮您的個人需要、投資目標及特定財政狀況。投資涉及風險，請運用個人獨立思考能力自行作出投資決定，並適當地尋求獨立的財務專業意見。版權所有，本專頁和網站保留一切最終權利。</p>
     </section>
 
     <section class="section" id="user-reviews">
       <h2>學生回饋</h2>
-      <p>以下是學員對 Invest1001 課程的評價與分享</p>
+      <p>港大各科尖子生極度好評！！！👍🏻👍🏻👍🏻</p>
       <div class="review-gallery">
         <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/StudentReview(1).png?raw=true" alt="review-gallery">
         <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/StudentReview(3).png?raw=true" alt="review-gallery">
@@ -862,7 +874,6 @@
 	<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 	<script>
-	  // Firebase configuration
 	  const firebaseConfig = {
 		apiKey: "AIzaSyB5hYKIi9R_UuL9KI-Y17upyMHNbHgiA9Y",
 		authDomain: "invest1001-a5282.firebaseapp.com",
@@ -873,7 +884,6 @@
 		appId: "1:409129504874:web:fce17614df12345d327a13",
 		measurementId: "G-6DL0Z71VMZ"
 	  };
-	  // Initialize Firebase
 	  firebase.initializeApp(firebaseConfig);
 	  const auth = firebase.auth();
 	  const googleProvider = new firebase.auth.GoogleAuthProvider();
@@ -883,35 +893,29 @@
 		auth.signInWithPopup(googleProvider)
 		  .then((result) => {
 			const user = result.user;
-			document.getElementById('user-info').textContent = `歡迎, ${user.displayName}`;
-			document.getElementById('google-login-btn').style.display = 'none';
-			document.getElementById('logout-btn').style.display = 'inline';
+			updateAuthDisplay(user);
 		  })
 		  .catch((error) => {
 			console.error('Login error:', error.message);
 		  });
 	  });
 
-	  // Logout
-	  document.getElementById('logout-btn').addEventListener('click', () => {
-		auth.signOut().then(() => {
-		  document.getElementById('user-info').textContent = '';
-		  document.getElementById('google-login-btn').style.display = 'inline';
-		  document.getElementById('logout-btn').style.display = 'none';
-		});
-	  });
+	  // Update auth display
+	  function updateAuthDisplay(user) {
+		const loginBtn = document.getElementById('google-login-btn');
+		const userInfo = document.getElementById('user-info');
+		if (user) {
+		  loginBtn.style.display = 'none';
+		  userInfo.innerHTML = `<img src="${user.photoURL || 'images/placeholder_icon.png'}" alt="User Icon" class="user-icon">`;
+		} else {
+		  loginBtn.style.display = 'flex';
+		  userInfo.innerHTML = '';
+		}
+	  }
 
 	  // Check login state
 	  auth.onAuthStateChanged((user) => {
-		if (user) {
-		  document.getElementById('user-info').textContent = `歡迎, ${user.displayName}`;
-		  document.getElementById('google-login-btn').style.display = 'none';
-		  document.getElementById('logout-btn').style.display = 'inline';
-		} else {
-		  document.getElementById('user-info').textContent = '';
-		  document.getElementById('google-login-btn').style.display = 'inline';
-		  document.getElementById('logout-btn').style.display = 'none';
-		}
+		updateAuthDisplay(user);
 	  });
 	</script>
 </body>
