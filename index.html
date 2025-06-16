@@ -45,368 +45,448 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Invest1001</title>
   <style>
-    * {
-      margin: 5;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      background-color: #E6F0FA; /* Soft light blue */
-      padding-top: 60px; /* For sticky nav */
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background-color: #333;
-      color: white;
-      padding: 10px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .nav-logo img {
-      height: 40px;
-      margin-left: 20px;
-    }
-    .nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-size: 1.1em;
-    }
-    .nav a:hover {
-      color: #007bff;
-    }
-    .nav-auth {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-right: 20px;
-    }
-    .auth-button {
-      background-color: #4285f4;
-      color: white;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .auth-button:hover {
-      background-color: #357ae8;
-    }
-    .user-info {
-      color: white;
-      font-size: 0.9em;
-    }
-    .course-header {
-      text-align: center;
-      padding: 40px 0;
-      background-color: #f8f9fa;
-    }
-    .course-header h1 {
-      font-size: 2.5em;
-      color: #333;
-    }
-    .course-header p {
-      font-size: 1.2em;
-      color: #666;
-      margin-bottom: 20px;
-    }
-    .section {
-      padding: 40px 0;
-    }
-    .section h2 {
-      font-size: 2em;
-      color: #333;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .intro-section {
-      padding: 20px 0;
-    }
-    .intro-container {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .intro-image {
-      flex: 1;
-      min-width: 300px;
-    }
-    .intro-image img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-    .intro-text {
-      flex: 2;
-      color: #333;
-    }
-    .intro-text h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-    }
-    .intro-text p {
-      font-size: 1.2em;
-      line-height: 1.6;
-      color: #666;
-    }
-    .advertisement {
-      text-align: center;
-      padding: 20px 0;
-      background-color: #f0f4f8;
-    }
-    .ad-description {
-      font-size: 1.1em;
-      color: #333;
-    }
-    .video-section {
-      padding: 20px 0;
-    }
-    .video-container {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .video-text {
-      flex: 1;
-      color: #333;
-    }
-    .video-text h2 {
-      font-size: 1.8em;
-      margin-bottom: 10px;
-    }
-    .video-text p {
-      font-size: 1.1em;
-      line-height: 1.6;
-      color: #666;
-    }
-    .video-embed {
-      flex: 1;
-      min-width: 300px;
-    }
-    .video-embed iframe {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .class-preview {
-      padding: 20px 0;
-      text-align: center;
-    }
-    .class-container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .class-container h2 {
-      font-size: 1.8em;
-      color: #333;
-      margin-bottom: 20px;
-    }
-    .class-video iframe {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .video-description {
-      font-size: 1.1em;
-      color: #666;
-      margin-top: 10px;
-    }
-    .price {
-      background-color: #e0f7fa;
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-      margin-top: 20px;
-    }
-    .price p {
-      font-size: 1.2em;
-      color: #333;
-      margin-bottom: 10px;
-    }
-    .price a {
-      background-color: #007bff;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-    .price a:hover {
-      background-color: #0056b3;
-    }
-    .image-standard {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin: 10px;
-    }
-	.tutor-photo {
+	* {
+	  margin: 0; /* Fixed typo: margin: 5 was invalid */
+	  padding: 0;
+	  box-sizing: border-box;
+	}
+	body {
+	  font-family: Arial, sans-serif;
+	  line-height: 1.6;
+	  background-color: #E6F0FA;
+	  padding-top: 4rem; /* Relative unit for sticky nav */
+	}
+	.container {
+	  max-width: 90vw; /* Fluid width, max 1200px */
+	  max-width: min(1200px, 90vw);
+	  margin: 0 auto;
+	  padding: 0 1.5rem;
+	}
+	.nav {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  z-index: 1000;
+	  background-color: #333;
+	  color: white;
+	  padding: 0.625rem 0;
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	}
+	.nav-logo img {
+	  height: 2.5rem; /* Scales with device */
+	  margin-left: 1.25rem;
+	}
+	.nav a {
+	  color: white;
+	  text-decoration: none;
+	  margin: 0 0.9375rem;
+	  font-size: 1.1rem;
+	}
+	.nav a:hover {
+	  color: #007bff;
+	}
+	.nav-auth {
+	  display: flex;
+	  align-items: center;
+	  gap: 0.625rem;
+	  margin-right: 1.25rem;
+	}
+	.auth-button {
+	  background-color: #4285f4;
+	  color: white;
+	  padding: 0.5rem 1rem;
+	  border: none;
+	  border-radius: 0.3125rem;
+	  cursor: pointer;
+	  font-size: 0.9rem;
+	}
+	.auth-button:hover {
+	  background-color: #357ae8;
+	}
+	.user-info {
+	  color: white;
+	  font-size: 0.9rem;
+	}
+	.course-header {
+	  text-align: center;
+	  padding: 2.5rem 0;
+	  background-color: #f8f9fa;
+	}
+	.course-header h1 {
+	  font-size: 2rem; /* Scales down on smaller screens */
+	  color: #333;
+	}
+	.course-header p {
+	  font-size: 1rem;
+	  color: #666;
+	  margin-bottom: 1.25rem;
+	}
+	.section {
+	  padding: 2.5rem 0;
+	}
+	.section h2 {
+	  font-size: 1.5rem;
+	  color: #333;
+	  text-align: center;
+	  margin-bottom: 1.25rem;
+	}
+	.intro-section {
+	  padding: 1.25rem 0;
+	}
+	.intro-container {
+	  display: flex;
+	  align-items: center;
+	  gap: 1.25rem;
+	  flex-wrap: wrap;
+	}
+	.intro-image {
+	  flex: 1;
+	  min-width: 18.75rem;
+	}
+	.intro-image img {
+	  width: 100%;
+	  height: auto;
+	  border-radius: 0.5rem;
+	}
+	.intro-text {
+	  flex: 2;
+	  color: #333;
+	}
+	.intro-text h1 {
+	  font-size: 2rem;
+	  margin-bottom: 0.625rem;
+	}
+	.intro-text p {
+	  font-size: 1rem;
+	  line-height: 1.6;
+	  color: #666;
+	}
+	.advertisement {
+	  text-align: center;
+	  padding: 1.25rem 0;
+	  background-color: #f0f4f8;
+	}
+	.ad-description {
+	  font-size: 1rem;
+	  color: #333;
+	}
+	.video-section {
+	  padding: 1.25rem 0;
+	}
+	.video-container {
+	  display: flex;
+	  align-items: center;
+	  gap: 1.25rem;
+	  flex-wrap: wrap;
+	}
+	.video-text {
+	  flex: 1;
+	  color: #333;
+	}
+	.video-text h2 {
+	  font-size: 1.5rem;
+	  margin-bottom: 0.625rem;
+	}
+	.video-text p {
+	  font-size: 1rem;
+	  line-height: 1.6;
+	  color: #666;
+	}
+	.video-embed {
+	  flex: 1;
+	  min-width: 18.75rem;
+	}
+	.video-embed iframe {
+	  width: 100%;
+	  border-radius: 0.5rem;
+	}
+	.class-preview {
+	  padding: 1.25rem 0;
+	  text-align: center;
+	}
+	.class-container {
+	  max-width: 50rem;
+	  margin: 0 auto;
+	}
+	.class-container h2 {
+	  font-size: 1.5rem;
+	  color: #333;
+	  margin-bottom: 1.25rem;
+	}
+	.class-video iframe {
+	  width: 100%;
+	  border-radius: 0.5rem;
+	}
+	.video-description {
+	  font-size: 1rem;
+	  color: #666;
+	  margin-top: 0.625rem;
+	}
+	.price {
+	  background-color: #e0f7fa;
+	  padding: 1.25rem;
+	  border-radius: 0.5rem;
+	  text-align: center;
+	  margin-top: 1.25rem;
+	}
+	.price p {
+	  font-size: 1rem;
+	  color: #333;
+	  margin-bottom: 0.625rem;
+	}
+	.price a {
+	  background-color: #007bff;
+	  color: white;
+	  padding: 0.625rem 1.25rem;
+	  text-decoration: none;
+	  border-radius: 0.3125rem;
+	}
+	.price a:hover {
+	  background-color: #0056b3;
+	}
+	.image-standard {
+	  max-width: 100%;
+	  height: auto;
+	  border-radius: 0.5rem;
+	  margin: 0.625rem;
+	}
+	.tutor-photo, .tutor-photo-rounded, .tutor-photo-bordered, .tutor-photo-shadow {
 	  width: 1000px;
 	  height: 750px;
+	  max-width: 100%; /* Scales to device width */
+	  height: auto; /* Preserves 4:3 ratio */
 	  object-fit: contain;
-	  margin: 10px;
+	  margin: 0.625rem;
 	}
 	.tutor-photo-rounded {
-	  width: 1000px;
-	  height: 750px;
-	  object-fit: contain;
 	  border-radius: 50%;
-	  margin: 10px;
 	}
 	.tutor-photo-bordered {
-	  width: 1000px;
-	  height: 750px;
-	  object-fit: contain;
 	  border: 3px solid #007bff;
-	  margin: 10px;
 	}
 	.tutor-photo-shadow {
-	  width: 1000px;
-	  height: 750px;
-	  object-fit: contain;
 	  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-	  margin: 10px;
 	}
 	.tutor-photo-row {
 	  display: flex;
-	  flex-wrap: nowrap; /* Prevents wrapping to new lines */
+	  flex-wrap: nowrap;
 	  justify-content: center;
-	  margin: 0px;
-	  overflow-x: auto; /* Adds horizontal scroll if images exceed container width */
+	  margin: 0;
+	  overflow-x: auto;
 	}
 	.tutor-photo-row img {
-	  width: 400px; /* Scaled down from 1160px */
-	  height: 300px; /* Scaled down from 870px, maintains 4:3 ratio */
+	  width: 400px;
+	  height: 300px;
+	  max-width: 100%; /* Scales to device width */
+	  height: auto; /* Preserves 4:3 ratio */
 	  object-fit: contain;
-	  border-radius: 8px;
-	  margin: 0px;
+	  border-radius: 0.5rem;
+	  margin: 0;
 	}
 	.review-gallery {
 	  display: grid;
-	  grid-template-columns: repeat(3, 1fr); /* Three columns per row */
-	  gap: 10px; /* Space between images */
-	  margin-top: 20px;
-	  max-width: 1200px; /* Matches container width */
+	  grid-template-columns: repeat(3, 1fr);
+	  gap: 0.625rem;
+	  margin-top: 1.25rem;
+	  max-width: 90vw;
 	}
 	.review-gallery img {
-	  max-width: 390px; /* Fits three images in 1200px with gaps */
-	  height: auto; /* Preserves original height */
-	  object-fit: contain; /* Scales without cropping */
-	  border-radius: 8px;
+	  max-width: 390px;
+	  height: auto;
+	  max-width: 100%; /* Scales to device width */
+	  object-fit: contain;
+	  border-radius: 0.5rem;
 	}
-    .reviews-paragraph {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    .reviews-subtitle {
-      text-align: center;
-      font-size: 1.8em;
-      color: #333;
-      margin-bottom: 20px;
-    }
-    .reviews-rating {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    .rating-score {
-      display: inline-block;
-      background-color: #007bff;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 1em;
-    }
-    .stars-icon {
-      width: 150px;
-      height: auto;
-      vertical-align: middle + 5px;
-      margin: 0 10px;
-    }
-    .review-item {
-      text-align: left;
-      margin-bottom: 20px;
-    }
-    .review-item h4 {
-      font-size: 1.2em;
-      margin: 10px 0;
-    }
-    .review-item p {
-      color: #666;
-      line-height: 1.6;
-    }
-    .review-feedback {
-      font-size: 0.9em;
-      color: #666;
-    }
-    .thumbsup-icon {
-      height: 16px;
-      vertical-align: middle;
-      margin: 0 5px;
-    }
-    .review-divider {
-      border: 0;
-      border-top: 1px solid #ddd;
-      margin: 20px 0;
-    }
-    .footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 20px 0;
-      margin-top: 40px;
-    }
-    .footer a {
-      color: #007bff;
-      text-decoration: none;
-    }
-    .footer a:hover {
-      text-decoration: underline;
-    }
-    .contact-icon {
-      width: 20px;
-      height: 20px;
-      vertical-align: middle;
-      margin-right: 8px;
-    }
+	.reviews-paragraph {
+	  max-width: 50rem;
+	  margin: 0 auto;
+	  padding: 1.25rem;
+	}
+	.reviews-subtitle {
+	  text-align: center;
+	  font-size: 1.5rem;
+	  color: #333;
+	  margin-bottom: 1.25rem;
+	}
+	.reviews-rating {
+	  text-align: center;
+	  margin-bottom: 1.875rem;
+	}
+	.rating-score {
+	  display: inline-block;
+	  background-color: #007bff;
+	  color: white;
+	  padding: 0.3125rem 0.625rem;
+	  border-radius: 0.3125rem;
+	  font-size: 0.9rem;
+	}
+	.stars-icon {
+	  width: 9.375rem;
+	  height: auto;
+	  vertical-align: middle;
+	  margin: 0 0.625rem;
+	}
+	.review-item {
+	  text-align: left;
+	  margin-bottom: 1.25rem;
+	}
+	.review-item h4 {
+	  font-size: 1rem;
+	  margin: 0.625rem 0;
+	}
+	.review-item p {
+	  color: #666;
+	  line-height: 1.6;
+	}
+	.review-feedback {
+	  font-size: 0.8rem;
+	  color: #666;
+	}
+	.thumbsup-icon {
+	  height: 1rem;
+	  vertical-align: middle;
+	  margin: 0 0.3125rem;
+	}
+	.review-divider {
+	  border: 0;
+	  border-top: 1px solid #ddd;
+	  margin: 1.25rem 0;
+	}
+	.footer {
+	  background-color: #333;
+	  color: white;
+	  text-align: center;
+	  padding: 1.25rem 0;
+	  margin-top: 2.5rem;
+	}
+	.footer a {
+	  color: #007bff;
+	  text-decoration: none;
+	}
+	.footer a:hover {
+	  text-decoration: underline;
+	}
+	.contact-icon {
+	  width: 1.25rem;
+	  height: 1.25rem;
+	  vertical-align: middle;
+	  margin-right: 0.5rem;
+	}
 	.thumbnail {
-		width: 800px;
-		height: 600px;
+	  width: 800px;
+	  height: 600px;
+	  max-width: 100%; /* Scales to device width */
+	  height: auto; /* Preserves 4:3 ratio */
+	  object-fit: contain;
 	}
-    @media (max-width: 768px) {
-      .intro-container, .video-container {
-        flex-direction: column;
-        text-align: center;
-      }
-      .video-container {
-        flex-direction: column-reverse;
-      }
-      .class-video iframe {
-        height: 200px;
-      }
-      .nav {
-        flex-direction: column;
-        padding: 15px 0;
-      }
-      .nav a {
-        margin: 5px 0;
-      }
-      .nav-auth {
-        margin-top: 10px;
-        margin-right: 0;
-      }
-    }
+	.positive {
+	  color: green;
+	}
+	.negative {
+	  color: red;
+	}
+	@media (max-width: 768px) {
+	  body {
+		padding-top: 6rem; /* Adjust for nav stacking */
+	  }
+	  .container {
+		padding: 0 1rem;
+	  }
+	  .nav {
+		flex-direction: column;
+		padding: 1rem 0;
+	  }
+	  .nav-logo img {
+		height: 2rem;
+	  }
+	  .nav a {
+		margin: 0.3125rem 0;
+		font-size: 1rem;
+	  }
+	  .nav-auth {
+		margin-top: 0.625rem;
+		margin-right: 0;
+	  }
+	  .auth-button {
+		padding: 0.375rem 0.75rem;
+		font-size: 0.8rem;
+	  }
+	  .course-header h1 {
+		font-size: 1.5rem;
+	  }
+	  .course-header p {
+		font-size: 0.9rem;
+	  }
+	  .section h2 {
+		font-size: 1.25rem;
+	  }
+	  .intro-container, .video-container {
+		flex-direction: column;
+		text-align: center;
+	  }
+	  .video-container {
+		flex-direction: column-reverse;
+	  }
+	  .intro-text h1 {
+		font-size: 1.5rem;
+	  }
+	  .intro-text p {
+		font-size: 0.9rem;
+	  }
+	  .video-text h2 {
+		font-size: 1.25rem;
+	  }
+	  .video-text p {
+		font-size: 0.9rem;
+	  }
+	  .class-container h2 {
+		font-size: 1.25rem;
+	  }
+	  .class-video iframe {
+		height: 12.5rem;
+	  }
+	  .tutor-photo, .tutor-photo-rounded, .tutor-photo-bordered, .tutor-photo-shadow {
+		width: 100%;
+		height: auto;
+	  }
+	  .tutor-photo-row img {
+		width: 100%;
+		height: auto;
+	  }
+	  .review-gallery {
+		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	  }
+	  .review-gallery img {
+		max-width: 100%;
+	  }
+	  .thumbnail {
+		width: 100%;
+		height: auto;
+	  }
+	}
+	@media (max-width: 480px) {
+	  .nav-logo img {
+		height: 1.5rem;
+	  }
+	  .nav a {
+		font-size: 0.9rem;
+	  }
+	  .course-header h1 {
+		font-size: 1.25rem;
+	  }
+	  .intro-text h1 {
+		font-size: 1.25rem;
+	  }
+	  .video-text h2 {
+		font-size: 1rem;
+	  }
+	  .class-video iframe {
+		height: 10rem;
+	  }
+	}
   </style>
 </head>
 <body>
@@ -429,11 +509,11 @@
     </nav>
 
     <div class="advertisement">
-	  <h1>免費投資課程馬上領取！</h1>
+	  <h1>零基礎投資大師速成秘笈免費送！</h1>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSdpZf08xQzEEzWLAwAmUm-RelUCa7O3BSe8RuWddQ25aWDRLA/viewform?usp=dialog" target="_blank">
         <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/ComingSoon.jpeg?raw=true" alt="Advertisement Banner" class="thumbnail">
       </a>
-      <p class="ad-description">點擊此處，把表單填好即可獲得免費投資課程！</p>
+      <p class="ad-description">點擊以上圖片，填好表單，領取免費課程！</p>
     </div>
 
     <section class="intro-section">
@@ -443,7 +523,7 @@
         </div>
         <div class="intro-text">
           <h1>Invest1001 聖者為王</h1>
-          <p>由聖者 Benson 創辦的投資課程教學中心，專注於股市投資教學，幫助散戶捕捉牛市升勢，辨識12-18個月內潛力上升300%-400%的超級成長股。加入我們，學習聖者引以為傲的投資技巧，開啟財富自由之路！</p>
+          <p>[description]</p>
         </div>
       </div>
     </section>
@@ -452,7 +532,13 @@
       <div class="video-container">
         <div class="video-text">
           <h2>聖者是誰？</h2>
-          <p>聖者 Benson 有着超過10年投資經驗，現任香港大學經濟學講師，曾多次入選富途牛牛著名牛友。</p>
+          <h3>聖者 Benson</h3>
+		  <p>90後香港大學講師 • 國際資歷 • 投資理論實戰兼備</p>
+		  <p>✔️ 魔鬼戰績：2022全球股災年狂賺90%+</p>
+		  <p>（同期恆指-20%、標普-18%、納指-33%）</p>
+		  <p>✔️ 週期投資「地緣套利演算法」 不用每天也浪費大量時間看市</p>
+		  <p>✔️ 教學狠辣：大學任教期間獲大量尖子好評</p>
+
         </div>
         <div class="video-embed">
           <iframe width="100%" height="315" src="https://www.youtube.com/embed/hCSAB3RiWTM?si=yDEZ6aLnMmwpdxmD" title="Invest1001 Intro Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -548,7 +634,8 @@
       </div>
 
       <h3>T4 VIP 鑽石會員課程</h3>
-      <p>此課程為月訂閱制，用戶須每月為此課程續費以繼續享有一切優惠，否則會員資格將會被暫時取消。</p>
+	  <p>購買此課程立刻獲得聖者為王 Discord 伺服器鑽石會員稱號並享有一切鑽石會員福利</p>
+      <p>（注：此課程為月訂閱制，用戶須每月為此課程續費以繼續享有一切優惠，否則會員資格將會被暫時取消）</p>
       <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/ComingSoon.jpeg?raw=true" alt="T4 Course Thumbnail" class="thumbnail">
       <p>尊貴會員權利包括專屬討論區、每日市場更新、精彩活動等。鑽石會員享有每月免費課程、投資總結、個人化建議等獨家福利!</p>
       <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/membership_.png?raw=true" alt="Membership Comparison" class="image-standard">
@@ -563,60 +650,87 @@
       <p>聖者 Benson Lam 是香港大學經濟學講師，香港大學經濟及商業策略智庫成員，前百億上市公司風投總監，專注於政治經濟學。他在投資方面有著豐富的經驗，富途部落的流量達到逾2,000,000，入市3年以十萬賺取超過千萬，年收益率超過90%。</p>
       <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/BensonTitle.jpeg?raw=true" alt="Benson Lam Photo" class="tutor-photo">
 	  
-	  <p>寶藏牛友認證：<a href="https://q.futunn.com/hk/feed/111250480694852?share_code=02AO7A">按此瀏覽</a></p>
+	  <h3>【寶藏牛友】聖者為王：連續賺千萬的「交易秘密」</h3>
+	  <p><a href="https://q.futunn.com/hk/feed/111250480694852?share_code=02AO7A">按此瀏覽</a></p>
 	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/FutuBanner.png?raw=true" alt="FutuBanner" class="tutor-photo">
 	  
-	  <p>2023年度寶藏牛友認證：<a href="https://q.futunn.com/hk/feed/111250480694852?share_code=02DSLW">按此瀏覽</a></p>
-	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/FutuRecognition1.png?raw=true" alt="FutuRecognition" class="tutor-photo">
-	  
-	  <p>2022年度新星牛友認證：<a href="https://q.futunn.com/hk/feed/111250480694852?share_code=02DSMX">按此瀏覽</a></p>
-	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/FutuRecognition4.png?raw=true" alt="FutuRecognition" class="tutor-photo">
-	  
-	  <p>期權交易需要避開那些坑：<a href="https://q.futunn.com/hk/feed/110059019436436?share_code=02DSJJ">按此瀏覽</a></p>
+	  <h3>期權交易心法：期權交易需要避開那些坑</h3>
+	  <p><a href="https://q.futunn.com/hk/feed/110059019436436?share_code=02DSJJ">按此瀏覽</a></p>
 	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/FutuPastLesson1Banner.png?raw=true" alt="FutuBanner" class="tutor-photo">
 	  
-	  <p>《走進我的交易室》NO.2 ：<a href="https://q.futunn.com/hk/feed/110649792987148?share_code=02DSKm">按此瀏覽</a></p>
+	  <h3>聖者的投資方法和心得分享—《走進我的交易室》NO.2 專欄採訪：</h3>
+	  <p><a href="https://q.futunn.com/hk/feed/110649792987148?share_code=02DSKm">按此瀏覽</a></p>
 	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/FutuPastLesson2Poster.png%20%E7%9A%84%E5%89%AF%E6%9C%AC.png?raw=true" alt="FutuPoster" class="tutor-photo">
 	  
-	  <p>港大股神交易分享 ：<a href="https://q.futunn.com/hk/feed/110649792987148?share_code=02DSKm">按此瀏覽</a></p>
+	  <h3>聖者獲富途牛牛邀請進行投資分享，並被封為＂港大股神＂ ：</h3>
+	  <p><a href="https://q.futunn.com/hk/feed/110649792987148?share_code=02DSKm">按此瀏覽</a></p>
 	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/FutuPastLesson3Banner2.jpeg?raw=true" alt="FutuBanner" class="tutor-photo">
 	  
-	  <p>富途牛牛《走出我的交易室》專欄採訪：<a href="https://q.futunn.com/hk/feed/110658771353604?share_code=02DSOT">按此瀏覽</a></p>
-	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/FutuRecognition5.png?raw=true" alt="FutuRecognition" class="tutor-photo">
-	  
-	  <p>富途牛牛Youtube訪問：<a href="https://youtu.be/kL6R5_3_l40?si=JIJvkqkP9c2C8OF6">按此瀏覽</a></p>
+	  <h3>富途牛牛Youtube訪問：【牛牛通勝】EP92</h3>
+	  <p>今年港股淡靜，投資者繼續關注股息、存息等等有現金流嘅投資主題，適逢幾間美國大銀行公布增加股息，今集牛牛通勝一次過幫大家比較港美銀行股嘅股息、股價回報！另外，民間股神Benson（專業投資者、牛友：o聖者為王o）喺市淡之下繼續貼倉，6月單月賺過百萬，買咗乜嘢令佢賺咁多？佢嚟緊又有乜部署？立即去片！<a href="https://youtu.be/kL6R5_3_l40?si=JIJvkqkP9c2C8OF6">按此瀏覽</a></p>
 	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/FutuYoutube.jpg?raw=true" alt="FutuLesson" class="tutor-photo">
 	  
-	  <p>聖者和一眾學生聚餐並舉行講座</p>
+	  <h3>聖者獲銀行以及券商邀請為高淨值投資者舉行投資講座</h3>
+	  <p>（高淨值投資者HNW需持有8,000,000或以上資產）</p>
 	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/FutuTalk1.jpeg?raw=true" alt="Talk" class="tutor-photo">
 	  
-	  <p>聖者於富途牛牛實體店舉行講座，並和一眾學生拍照留念</p>
+	  <h3>聖者獲邀於富途牛牛實體店舉行講座，並和一眾參加者以及粉絲拍照留念</h3>
+	  <p>講座內容:</p>
+	  <p>當AI開始炒股票時你還在看K線圖嗎 ❓ </p>
+	  <p>🚨 導師 聖者為王Benson 帶你突破盲點：</p>
+	  <p>「從0到職業投資人的實戰心法 × 地緣政治下的財富重分配藍圖」</p>
+	  <p>——————————————————————</p>
+	  <p>💥【1.5小時顛覆認知內容】💥</p>
+	  <p>1️⃣【跨越鴻溝｜新手→專業的關鍵轉型】</p>
+	  <p>▸ 90%散戶不知道的「風險閾值管理」</p>
+	  <p>▸ 用「軍工思維」重組你的投資組合</p>
+	  <p>2️⃣【2024終極預判｜中美地雷區裡的黃金賽道】</p>
+	  <p>▸ 解析川普2.0時代：關稅3.0 × 能源暗戰 × 美元霸權新變數</p>
+	  <p>▸ 中國經濟未來要看哪個指標？獨家數據模型拆解真實黃金機會 </p>
+	  <p>▸ 黃金、加密貨幣、AI軍備賽的三角套利策略</p>
+      <p>3️⃣【現場限時解鎖】</p>
+	  <p>▸ 獨家分享內容不公開透露</p>
+	  <p>▸ 深度QnA：手把手檢視你的資產防彈等級</p>
+	  <p>✅ 傳授燒腦思維和「在亂世中主動創造波動性獲利」的黑暗兵法</p>
 	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/FutuTalk2.jpg?raw=true" alt="Talk" class="tutor-photo">
 	  
-	  <p>聖者於香港大學開辦課程</p>
+	  <h3>聖者於香港大學任教政治經濟學投資課程，吸引一眾港大尖子身報讀</h3>
+	  <p>包括但不限於Bachelor of Finance in Asset Management and Private Banking [BFin(AMPB)]</p>
+	  <p>Bachelor of Business Administration (Law) [BBA(Law)] 等著名學科的學生</p>
 	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/HKULesson1-1.jpg?raw=true" alt="HKULesson" class="tutor-photo">
 	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/HKULesson1.png?raw=true" alt="Achievement" class="tutor-photo">
 	  
-	  <p>聖者在2022年度直至6月份投資跑贏各大指數紀錄</p>
+	  <h3>聖者在2022年度6月份投資收益</h3>
 	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/Win2.png?raw=true" alt="Achivement" class="tutor-photo">
 	  
-	  <p>聖者在2022年度直至9月份投資跑贏各大指數紀錄</p>
-	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/HengSheng%20&%20S%20&%20P.png?raw=true" alt="Achievement" class="tutor-photo">
-
-	  <p>聖者在2022年度直至12月份投資跑贏各大指數紀錄</p>
-	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/HengSheng%20&%20S%20&%20P%2021.png?raw=true" alt="Achievement" class="tutor-photo">
-	  
-	  <p>聖者三大最成功投資策略——快手：<a href="https://q.futunn.com/hk/feed/106868530153428?share_code=02AOeH">按此瀏覽</a></p>
+	  <h3>聖者三大最成功投資策略——快手：</h3>
+	  <p>聖者經過研究，發現快手於其上市早年的初始投資成本價值只是HKD數元。但於2021年初上市時，上市的IPO價高達115 HKD ！！</p>
+	  <p>由於市場情緒高漲，快手上市價在首日掛牌時已經高漲至四百多港元！</p>
+	  <p>聖者認為其價值已經被極度高估，同時他把握國家政策正在打壓科技企業的時機，以他獨有的策略在快手上市半年後的股票解禁期，三個月內成功獲利數倍！！</p>
+	  <p>是一次接近八位數的投資超成功部署！！！</p>
+	  <p><a href="https://q.futunn.com/hk/feed/106868530153428?share_code=02AOeH">按此瀏覽</a></p>
 	  <div class="tutor-photo-row">
 		  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/KuaiShou1.png?raw=true" alt="Achievement">
 		  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/KuaiShou2.png?raw=true" alt="Achievement">
 		  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/KuaiShou3.png?raw=true" alt="Achievement">
 	  </div>
-	  <p>聖者三大最成功投資策略——騰訊：<a href="https://q.futunn.com/hk/feed/111250480694852?share_code=02AO7A">按此瀏覽</a></p>
-	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/Tencent.png?raw=true" alt="Achievement" class="tutor-photo">
 	  
-	  <p>聖者三大最成功投資策略——QQQ：<a href="https://q.futunn.com/hk/feed/111250480694852?share_code=02AO7A">按此瀏覽</a></p>
+	  <h3>聖者三大最成功投資策略——騰訊：</h3>
+	  <p>勝者在22年時看空騰訊並作出一次大膽的投資決定！</p>
+	  <p>成功賺取他人生中的第一桶金，更被富途牛牛評委當年度新星牛友！！</p>
+	  <p><a href="https://q.futunn.com/hk/feed/111250480694852?share_code=02AO7A">按此瀏覽</a></p>
+	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/Tencent.png?raw=true" alt="Achievement" class="tutor-photo">
+	  <p>2022年度新星牛友認證：<a href="https://q.futunn.com/hk/feed/111250480694852?share_code=02DSMX">按此瀏覽</a></p>
+	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/FutuRecognition4.png?raw=true" alt="FutuRecognition" class="tutor-photo">
+	  
+	  <p>聖者三大最成功投資策略——QQQ：</p>
+	  <p>聖者在22年美股及全球熊市中大膽看空美股</p>
+	  <p><a href="https://q.futunn.com/hk/feed/111250480694852?share_code=02AO7A">按此瀏覽</a></p>
 	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/Win1.png?raw=true" alt="Achievement" class="tutor-photo">
+	  <h3>聖者在2022年度直至9月份投資跑贏各大指數紀錄</h3>
+	  <p>個人回報高達<span class="positive">90% +</span>!</p>
+	  <p>跑贏恆指<span class="negative">-19.5%</span>標普指數<span class="negative">-18.2%</span>!</p>
+	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/HengSheng%20&%20S%20&%20P.png?raw=true" alt="Achievement" class="tutor-photo">
 	  
 	  <p>投資是你對這個世界認知的兌現——Benson聖者 </p>
 	  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/FutuPosterEnglish.jpg%20%E7%9A%84%E5%89%AF%E6%9C%AC.jpg?raw=true" alt="FutuPoster" class="tutor-photo">
