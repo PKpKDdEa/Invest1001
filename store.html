@@ -179,19 +179,20 @@
 	  border-radius: 0.3125rem;
 	  cursor: pointer;
 	  font-size: 1rem;
-	  transition: background-color 0.3s;
+	  transition: background-color 0.3s, transform 0.1s;
 	}
 	.purchase-btn:hover:not([disabled]) {
-	  background-color: #0056b3;
+	  background-color: #0056b3 !important;
+	}
+	.purchase-btn:active:not([disabled]) {
+	  background-color: #004080 !important;
+	  transform: scale(0.95);
 	}
 	.purchase-btn[disabled] {
 	  background-color: #ccc;
 	  color: #666;
 	  pointer-events: none;
 	  cursor: not-allowed;
-	}
-	.purchase-btn:active:not([disabled]) {
-	  background-color: #004080;
 	}
 	.payment-options {
 	  display: none;
@@ -483,7 +484,7 @@
 			<img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/payme.png?raw=true" alt="PayMe" data-method="payme" data-course="${course}">
 			<img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/alipay.png?raw=true" alt="Alipay" data-method="alipay" data-course="${course}">
 		  `;
-		  btn.parentNode.insertBefore(paymentOptions, btn.nextElementSibling.nextElementSibling.nextElementSibling);
+	      btn.parentNode.insertBefore(paymentOptions, btn.nextElementSibling.nextElementSibling);
 		  paymentOptions.querySelectorAll('img').forEach(img => {
 			img.addEventListener('click', () => handlePayment(img.getAttribute('data-method'), course, uid, email));
 		  });
