@@ -314,7 +314,6 @@
     <section class="store-header">
       <h1>購買 Invest1001 課程</h1>
       <p>選擇適合你的投資課程，開啟財富自由之路！</p>
-	  <input type="text" id="discord-id" placeholder="你的 Discord ID" style="margin-bottom: 0.625rem; padding: 0.5rem; width: 100%;">
     </section>
 
 	<section class="section" id="store">
@@ -418,37 +417,33 @@
 	  const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 	  document.getElementById('google-login-btn').addEventListener('click', () => {
-	    const discordId = document.getElementById('discord-id').value;
-	    if (!discordId) {
-		  alert('Please enter your Discord ID.');
-		  return;
-	    }
-	    auth.signInWithPopup(googleProvider)
+		auth.signInWithPopup(googleProvider)
 		  .then((result) => {
-		    const user = result.user;
-		    db.collection('users').doc(user.uid).set({
+			const user = result.user;
+			const discordId = prompt('Please enter your Discord ID: ');
+			db.collection('users').doc(user.uid).set({
 			  email: user.email,
 			  displayName: user.displayName,
-			  discordId: discordId,
+			  discordId: discordId || null,
 			  courses: {
-			    T1: false,
-			    T2: false,
-			    T3: false,
-			    T4: false,
-			    T4_expiryDate: null
+				T1: false,
+				T2: false,
+				T3: false,
+				T4: false,
+				T4_expiryDate: null
 			  },
 			  lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
-		    }, { merge: true })
-		    .then(() => {
+			}, { merge: true })
+			.then(() => {
 			  console.log('User document created/updated');
 			  updateAuthDisplay(user);
-		    })
-		    .catch((error) => {
+			})
+			.catch((error) => {
 			  console.error('Firestore error:', error.message);
-		    });
+			});
 		  })
 		  .catch((error) => {
-		    console.error('Login error:', error.message);
+			console.error('Login error:', error.message);
 		  });
 	  });
 
