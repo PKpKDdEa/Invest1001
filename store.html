@@ -420,9 +420,11 @@
 		auth.signInWithPopup(googleProvider)
 		  .then((result) => {
 			const user = result.user;
+			const discordId = prompt('Please enter your Discord ID: ');
 			db.collection('users').doc(user.uid).set({
 			  email: user.email,
 			  displayName: user.displayName,
+			  discordId: discordId || null,
 			  courses: {
 				T1: false,
 				T2: false,
@@ -512,9 +514,8 @@
 		  .then(() => {
 			console.log(`${course} purchase recorded in Firestore`);
 			if (method === 'payme') {
-			  alert('The course is coming soon!');
-			  //const paymeLink = `https://payme.hsbc.com.hk/1/${encodeURIComponent('invest1001@gmail.com')}?amount=${prices[course]}&note=${course}_Purchase_${encodeURIComponent(email)}`;
-			  //window.location.href = paymeLink;
+			  const paymeLink = `https://payme.hsbc.com.hk/1/${encodeURIComponent('invest1001@gmail.com')}?amount=${prices[course]}&note=${course}_Purchase_${encodeURIComponent(email)}`;
+			  window.location.href = paymeLink;
 			} else if (method === 'alipay') {
 			  alert('The course is coming soon!');
 			}

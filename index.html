@@ -896,10 +896,11 @@
 		auth.signInWithPopup(googleProvider)
 		  .then((result) => {
 			const user = result.user;
-			// Create/update user document in Firestore
+			const discordId = prompt('Please enter your Discord ID: ');
 			db.collection('users').doc(user.uid).set({
 			  email: user.email,
 			  displayName: user.displayName,
+			  discordId: discordId || null,
 			  courses: {
 				T1: false,
 				T2: false,
