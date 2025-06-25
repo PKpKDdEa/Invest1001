@@ -399,6 +399,52 @@
 	.negative {
 	  color: red;
 	}
+	.logo-section {
+	  background-color: #333;
+	  color: white;
+	  padding: 2.5rem 0;
+	}
+	.logo-section .container {
+	  max-width: 90vw;
+	  max-width: min(1200px, 90vw);
+	  margin: 0 auto;
+	  padding: 0 1.5rem;
+	}
+	.logo-group {
+	  margin-bottom: 2.5rem;
+	}
+	.logo-group h2 {
+	  font-size: 1rem;
+	  color: white;
+	  text-align: center;
+	  margin-bottom: 1.25rem;
+	}
+	.logo-grid {
+	  display: grid;
+	  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+	  gap: 1rem;
+	  justify-items: center;
+	}
+	.logo-item {
+	  width: 100px;
+	  height: 100px;
+	  background-color: white;
+	  border-radius: 0.5rem;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  overflow: hidden;
+	  transition: transform 0.2s;
+	}
+	.logo-item img {
+	  width: 100%;
+	  height: 100%;
+	  object-fit: contain;
+	  padding: 0.5rem;
+	}
+	.logo-item:hover {
+	  transform: scale(1.05);
+	}
 	@media (max-width: 768px) {
 	  body {
 		padding-top: 6rem; /* Adjust for nav stacking */
@@ -477,6 +523,12 @@
 		width: 100%;
 		height: auto;
 	  }
+	  .logo-grid {
+		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+	  }
+	  .logo-group h2 {
+		font-size: 1.25rem;
+	  }
 	}
 	@media (max-width: 480px) {
 	  .nav-logo img {
@@ -496,6 +548,16 @@
 	  }
 	  .class-video iframe {
 		height: 10rem;
+	  }
+	  .logo-section {
+		padding: 1.5rem 0;
+	  }
+	  .logo-grid {
+		grid-template-columns: 1fr;
+	  }
+	  .logo-item {
+		width: 80px;
+		height: 80px;
 	  }
 	}
   </style>
@@ -776,13 +838,20 @@
 
     <section class="section" id="user-reviews">
       <h2>學生回饋</h2>
-      <p>港大各科尖子生極度好評！！！👍🏻👍🏻👍🏻</p>
+      <h3><center>以下是來自港大各科尖子生以及聖者在不同講座收到的學生回饋👍🏻👍🏻👍🏻</center></h3>
       <div class="review-gallery">
         <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/StudentReview(1).png?raw=true" alt="review-gallery">
         <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/StudentReview(3).png?raw=true" alt="review-gallery">
         <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/StudentReview(6).png?raw=true" alt="review-gallery">
         <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/StudentReview(7).png?raw=true" alt="review-gallery">
 		<img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/StudentReview(8).png?raw=true" alt="review-gallery">
+		<img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/UserFeedBack(1).jpeg?raw=true" alt="review-gallery">
+		<img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/UserFeedBack(2).jpeg?raw=true" alt="review-gallery">
+		<img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/UserFeedBack(3).jpeg?raw=true" alt="review-gallery">
+		<img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/UserFeedBack(4).jpeg?raw=true" alt="review-gallery">
+		<img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/UserFeedBack(5).jpeg?raw=true" alt="review-gallery">
+		<img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/UserFeedBack(7).jpeg?raw=true" alt="review-gallery">
+		<img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/UserFeedBack(8).jpeg?raw=true" alt="review-gallery">
       </div>
       <div class="reviews-paragraph">
         <h3 class="reviews-subtitle">看看大家怎麼說...</h3>
@@ -793,8 +862,8 @@
         </div>
         <div class="review-item">
           <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/5stars.png?raw=true" alt="5 Stars" class="stars-icon">
-          <h4>課程改變了我的投資思維</h4>
-          <p>聖者的課程深入淺出，讓我從零開始學會如何選股，真的很推薦！</p>
+          <h4>來自香港大學中醫全科學士Clarence</h4>
+          <p>感謝聖者教授了好多好有用嘅技巧同方法呀，令到我的交易能力提高了，盈利也有所改善了，非常感激！🙏🏻</p>
           <div class="review-feedback">
             <span>這個評論有幫助嗎？</span>
             <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/thumb%20up.png?raw=true" alt="Thumbs Up" class="thumbsup-icon">
@@ -804,8 +873,8 @@
         <hr class="review-divider">
         <div class="review-item">
           <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/5stars.png?raw=true" alt="5 Stars" class="stars-icon">
-          <h4>專業且實用的內容</h4>
-          <p>T2課程的進階策略讓我在市場中更有信心，感謝聖者！</p>
+          <h4>來自富途牛友K先生</h4>
+          <p>有幸能遇到Benson這位良師益友！他在Lesson講嘅嘢，好多都好有道理，我成日交易時記住他所說的話然後作出正確嘅抉擇👍🏻👍🏻👍🏻</p>
           <div class="review-feedback">
             <span>這個評論有幫助嗎？</span>
             <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/thumb%20up.png?raw=true" alt="Thumbs Up" class="thumbsup-icon">
@@ -815,8 +884,8 @@
         <hr class="review-divider">
         <div class="review-item">
           <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/5stars.png?raw=true" alt="5 Stars" class="stars-icon">
-          <h4>VIP課程物超所值</h4>
-          <p>鑽石會員的每日更新和個人化建議讓我投資更精準。</p>
+          <h4>來自富途牛友W先生</h4>
+          <p>上過聖者喺富途牛牛開嘅課堂之後，我獲益良多🙏🏻🙏🏻🙏🏻呢個都係點解Benson嘅每一個講座我都會去，期待嚟緊推出嘅VIP課程！！！</p>
           <div class="review-feedback">
             <span>這個評論有幫助嗎？</span>
             <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/thumb%20up.png?raw=true" alt="Thumbs Up" class="thumbsup-icon">
@@ -826,6 +895,124 @@
         <hr class="review-divider">
       </div>
     </section>
+
+	<section class="logo-section">
+	  <div class="container">
+	  <h1><center>聖者曾和以下機構合作並獲認證</center></h1>
+		<div class="logo-group">
+		  <h2>投資/經濟分享及媒體採訪</h2>
+		  <div class="logo-grid">
+			<div class="logo-item">
+			  <img src="https://raw.githubusercontent.com/PKpKDdEa/Invest1001/refs/heads/main/Invest1001website/edigest-logo.webp" alt="Edigest Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/HKEJ.png?raw=true" alt="HKEJ Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/Hk01.png?raw=true" alt="HK01 Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/masterInsight.jpg?raw=true" alt="Master Insight Logo">
+			</div>
+		  </div>
+		</div>
+		<div class="logo-group">
+		  <h2>金融機構</h2>
+		  <div class="logo-grid">
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/Symbole-Goldman-Sachs.jpg?raw=true" alt="Goldman Sachs Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/UBS.png?raw=true" alt="UBS Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/futu_icon.jpeg?raw=true" alt="Futu Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://raw.githubusercontent.com/PKpKDdEa/Invest1001/refs/heads/main/Invest1001website/vbkr.webp" alt="Valueable Broker Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/CSOP_Logo_Bilingual.png?raw=true" alt="CSOP Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/BoseraFunds.png?raw=true" alt="博時基金 Logo">
+			</div>
+		  </div>
+		</div>
+		<div class="logo-group">
+		  <h2>公共部門</h2>
+		  <div class="logo-grid">
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/APEC.jpeg?raw=true" alt="APEC Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/TID_logo.png?raw=true" alt="HK 工業貿易署 Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/HKFYG.png?raw=true" alt="HKFYG Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/BEC.jpg?raw=true" alt="商界環保協會 Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/HKPC.jpeg?raw=true" alt="HKPC Logo">
+			</div>
+		  </div>
+		</div>
+		<div class="logo-group">
+		  <h2>高等學院</h2>
+		  <div class="logo-grid">
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/HKU-Business-School-Logo.jpg?raw=true" alt="HKU Business School Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/university-of-warwick-warw.jpg?raw=true" alt="Warwick University Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/HKUST-BUSINESS-SCHOOL.jpg?raw=true" alt="HKUST Business School Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/HKMU-logo-full-v.png?raw=true" alt="HKMU Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/HKUspace.png?raw=true" alt="HKU SPACE Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://raw.githubusercontent.com/PKpKDdEa/Invest1001/refs/heads/main/Invest1001website/Enactus.webp" alt="Enactus HK Logo">
+			</div>
+		  </div>
+		</div>
+		<div class="logo-group">
+		  <h2>商業機構</h2>
+		  <div class="logo-grid">
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/RegalHotels.jpeg?raw=true" alt="Regal Hotels Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/FungGroup.jpeg?raw=true" alt="Fung Group Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/FWD.jpeg?raw=true" alt="FWD Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/ABO.png?raw=true" alt="Agriculture Bank of China Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/HKTV%20mall.jpeg?raw=true" alt="HKTVMall Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/AirportHK.jpeg?raw=true" alt="Airport Authorities HK Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/GIG.jpeg?raw=true" alt="GLG Logo">
+			</div>
+			<div class="logo-item">
+			  <img src="https://github.com/PKpKDdEa/Invest1001/blob/main/Invest1001website/AIA.jpg?raw=true" alt="AIA Logo">
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</section>
 
     <section class="section" id="contact">
       <h2>聯繫我們</h2>
