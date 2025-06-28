@@ -87,8 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
         T4: 2888
       };
       if (method === 'payme') {
-        const paymeLink = `https://payme.hsbc.com.hk/1/${encodeURIComponent('invest1001@gmail.com')}?amount=${prices[course]}¬e=${course}_Purchase_${encodeURIComponent(email)}`;
-        window.location.href = paymeLink;
+        alert('The course is coming soon!');
+        //const paymeLink = `https://payme.hsbc.com.hk/1/${encodeURIComponent('invest1001@gmail.com')}?amount=${prices[course]}¬e=${course}_Purchase_${encodeURIComponent(email)}`;
+        //window.location.href = paymeLink;
       } else if (method === 'alipay') {
         alert('The course is coming soon!');
       }
@@ -106,12 +107,20 @@ document.addEventListener('DOMContentLoaded', () => {
               db.collection('users').doc(user.uid).set({
                 email: user.email,
                 displayName: user.displayName,
+                discordID: null,
                 courses: {
                   T1: false,
                   T2: false,
                   T3: false,
                   T4: false,
-                  T4_expiryDate: null
+                  T4_expiryDate: null,
+                  T5: false,
+                  T6: false,
+                  T7: false,
+                  Extra1: false,
+                  Extra2: false,
+                  FreeCourse1: false,
+                  FreeCourse2: false,
                 },
                 lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
               }, { merge: true })
